@@ -1,0 +1,274 @@
+- id: '1522773362369'
+  alias: "Tasmota State on HA Restart"
+  trigger:
+    platform: homeassistant
+    event: start 
+  action:
+   - service: mqtt.publish
+     data:
+      topic: "cmnd/sonoffs/backlog"
+      payload: "power1 ;power2 ;power3 ;power4 ;power5; dimmer; state "
+- id: '1522773362354'
+  alias: Livingroom Automation OFF
+  trigger:
+  - event_data:
+      basic_level: 0
+      entity_id: zwave.upstairs_livingroom_light
+    event_type: zwave.node_event
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.master_livingroom
+      message: livingroom automations are now off
+    service: tts.google_say
+  - data:
+      entity_id: input_boolean.livingroom_automations
+    service: input_boolean.turn_off
+- id: '1522773362390'
+  alias: Livingroom Automation ON
+  trigger:
+  - event_data:
+      basic_level: 255
+      entity_id: zwave.upstairs_livingroom_light
+    event_type: zwave.node_event
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.master_livingroom
+      message: livingroom automations are now on
+    service: tts.google_say
+  - data:
+      entity_id: input_boolean.livingroom_automations
+    service: input_boolean.turn_on
+- id: '1522798415070'
+  alias: Bedroom Automations OFF
+  trigger:
+  - event_data:
+      basic_level: 0
+      entity_id: zwave.master_bedroom_light
+    event_type: zwave.node_event
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: automation.bedroom_light_off_at_11
+    service: automation.turn_off
+  - data:
+      entity_id: media_player.master_livingroom
+      message: bedroom automations are now turned off
+    service: tts.google_say
+  - data:
+      entity_id: input_boolean.bedroom_automations
+    service: input_boolean.turn_off
+- id: '1522798415090'
+  alias: Bedroom Automations ON
+  trigger:
+  - event_data:
+      basic_level: 255
+      entity_id: zwave.master_bedroom_light
+    event_type: zwave.node_event
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: automation.bedroom_light_off_at_11
+    service: automation.turn_on
+  - data:
+      entity_id: media_player.master_livingroom
+      message: bedroom automations are now turned on
+    service: tts.google_say
+  - data:
+      entity_id: input_boolean.bedroom_automations
+    service: input_boolean.turn_on
+- id: '1523293993904'
+  alias: upstairs door unlock
+  trigger:
+  - entity_id: lock.upstairs_door_lock
+    from: locked
+    platform: state
+    to: unlocked
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.kitchen_display
+      message: Upstairs door is now unlocked
+    service: tts.google_say
+  - data:
+      entity_id: media_player.master_livingroom
+      message: Upstairs door is now unlocked
+    service: tts.google_say
+- id: '1523294122026'
+  alias: upstairs door locked
+  trigger:
+  - entity_id: lock.upstairs_door_lock
+    from: unlocked
+    platform: state
+    to: locked
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.kitchen_display
+      message: Upstairs door is now locked
+    service: tts.google_say
+  - data:
+      entity_id: media_player.master_livingroom
+      message: Upstairs door is now locked
+    service: tts.google_say
+- id: '1523464799140'
+  alias: daily test
+  trigger:
+  - at: '12:00:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.kitchen_display
+      message: Hello .... This is a daily test of the home automation system ....
+        this is only a test ....... the current time is 12 o'clock
+    service: tts.google_say
+  - data:
+      entity_id: media_player.master_livingroom
+      message: Hello .... This is a daily test of the home automation system ....
+        this is only a test ....... the current time is 12 o'clock
+    service: tts.google_say
+- id: '1529960134959'
+  alias: Fan Automation ON
+  trigger:
+  - event_data:
+      basic_level: 255
+      entity_id: zwave.upstairs_livingroom_fan
+    event_type: zwave.node_event
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.fan
+    service: input_boolean.turn_on
+  - data:
+      entity_id: media_player.master_livingroom
+      message: livingroom fan automations are now turned on
+    service: tts.google_say
+- id: '1529960903752'
+  alias: Fan Automation OFF
+  trigger:
+  - event_data:
+      basic_level: 0
+      entity_id: zwave.upstairs_livingroom_fan
+    event_type: zwave.node_event
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.fan
+    service: input_boolean.turn_off
+  - data:
+      entity_id: media_player.master_livingroom
+      message: livingroom fan automations are now turned off
+    service: tts.google_say
+- id: '1534814076345'
+  alias: Power state on HA start-up
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+  - service: mqtt.publish
+    data:
+      topic: cmnd/sonoffs/power1
+      payload: ''
+  - service: mqtt.publish
+    data:
+      topic: cmnd/sonoffs/power2
+      payload: ''
+  - service: mqtt.publish
+    data:
+      topic: cmnd/sonoffs/Power3
+      payload: ''
+  - service: mqtt.publish
+    data:
+      topic: cmnd/sonoffs/power4
+      payload: ''
+- id: '1542692253070'
+  alias: Matt on the way home
+  trigger:
+  - entity_id: device_tracker.matt
+    from: Work
+    platform: state
+    to: not_home
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.kitchen_display
+      message: Matt is on the way home from work!
+    service: tts.google_say
+  - data:
+      entity_id: media_player.master_livingroom
+      message: Matt is on the way home from work!
+    service: tts.google_say
+- id: '1542692251120'
+  alias: Washer State - Start
+  trigger:
+  - above: '8'
+    entity_id: sensor.washer_watts
+    for: 0:00:05
+    platform: numeric_state
+  condition:
+  - condition: template
+    value_template: '{{ states.sensor.washer_state.state != ''Washing'' }}'
+  action:
+  - data:
+      payload: Washing
+      retain: 'true'
+      topic: hass/state/washer
+    service: mqtt.publish
+- id: '1542692251121'
+  alias: Washer State - Idle
+  trigger:
+  - below: '5'
+    entity_id: sensor.washer_watts
+    for: 0:04:00
+    platform: numeric_state
+  action:
+  - data:
+      payload: Idle
+      retain: 'true'
+      topic: hass/state/washer
+    service: mqtt.publish
+- id: '1542692251123'
+  alias: Printer State - Start
+  trigger:
+  - above: '30'
+    entity_id: sensor.3d_printer_watts
+    for: 0:00:05
+    platform: numeric_state
+  action:
+  - data:
+      payload: Printing
+      retain: 'true'
+      topic: hass/state/printer
+    service: mqtt.publish
+- id: '1542692251124'
+  alias: Printer State - Idle
+  trigger:
+  - below: '9'
+    entity_id: sensor.3d_printer_watts
+    for: 0:00:05
+    platform: numeric_state
+  action:
+  - data:
+      payload: Idle
+      retain: 'true'
+      topic: hass/state/printer
+    service: mqtt.publish
+- id: '1555385104769'
+  alias: Away Mode
+  trigger: []
+  condition: []
+  action: []
+- id: '1555385722867'
+  alias: Home Mode
+  trigger: []
+  condition: []
+  action: []
+

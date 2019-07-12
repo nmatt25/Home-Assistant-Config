@@ -1,0 +1,259 @@
+- platform: mqtt
+  name: "Bedroom Fan Light"
+  state_topic: "stat/bedroom_fan/POWER1"
+  command_topic: "cmnd/bedroom_fan/POWER1"
+  availability_topic: "tele/bedroom_fan/LWT"
+  qos: 2
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Vanity Light"
+  state_topic: "stat/vanity/POWER"
+  command_topic: "cmnd/vanity/POWER"
+  availability_topic: "tele/vanity/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Washing Machine"
+  state_topic: "stat/washing_machine/POWER"
+  command_topic: "cmnd/washing_machine/POWER"
+  availability_topic: "tele/washing_machine/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Master Bathroom Sink Light"
+  state_topic: "stat/master_bathroom_sink_light/POWER1"
+  command_topic: "cmnd/master_bathroom_sink_light/POWER1"
+  availability_topic: "tele/master_bathroom_sink_light/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Master Bathroom Sink Light 2"
+  state_topic: "stat/master_bathroom_sink_light/POWER2"
+  command_topic: "cmnd/master_bathroom_sink_light/POWER2"
+  availability_topic: "tele/master_bathroom_sink_light/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Christmas Tree"
+  state_topic: "stat/christmas tree/POWER"
+  command_topic: "cmnd/christmas tree/POWER"
+  availability_topic: "tele/christmas tree/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Christmas Lights"
+  state_topic: "stat/christmas lights/POWER"
+  command_topic: "cmnd/christmas lights/POWER"
+  availability_topic: "tele/christmas lights/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "3D Printer"
+  state_topic: "stat/3d_printer/POWER"
+  command_topic: "cmnd/3d_printer/POWER"
+  availability_topic: "tele/3d_printer/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Back Bar Sign"
+  state_topic: "stat/back_bar_sign/POWER"
+  command_topic: "cmnd/back_bar_sign/POWER"
+  availability_topic: "tele/back_bar_sign/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Smoke Eater"
+  state_topic: "stat/smoke_eater/POWER"
+  command_topic: "cmnd/smoke_eater/POWER"
+  availability_topic: "tele/smoke_eater/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Liquor Cabinet"
+  state_topic: "stat/liquor_cabinet/POWER"
+  command_topic: "cmnd/liquor_cabinet/POWER"
+  availability_topic: "tele/liquor_cabinet/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Front Bedroom Light"
+  state_topic: "stat/lamp1/POWER"
+  command_topic: "cmnd/lamp1/POWER"
+  availability_topic: "tele/lamp1/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Back Bedroom Light"
+  state_topic: "stat/lamp2/POWER"
+  command_topic: "cmnd/lamp2/POWER"
+  availability_topic: "tele/lamp2/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Basement Stairs"
+  state_topic: "stat/basement_steps/POWER"
+  command_topic: "cmnd/basement_steps/POWER"
+  availability_topic: "tele/basement_steps/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+#___________________________________________Holiday Lghts_________________________________________________________________
+- platform: mqtt
+  name: "Audio Effects"
+  state_topic: "holidayLights/audio/state"
+  command_topic: "holidayLights/addEffects"
+  payload_on: "Audio On"
+  payload_off: "Audio Off"
+  retain: false
+- platform: mqtt
+  name: "Add Glitter"
+  state_topic: "holidayLights/glitter/state"
+  command_topic: "holidayLights/addEffects"
+  payload_on: "Glitter On"
+  payload_off: "Glitter Off"
+  retain: false
+- platform: mqtt
+  name: "Add Lightning"
+  state_topic: "holidayLights/lightning/state"
+  command_topic: "holidayLights/addEffects"
+  payload_on: "Lightning On"
+  payload_off: "Lightning Off"
+  retain: false
+
+
+#------------------tv Remotes-------------------------------
+- platform: broadlink
+  host: 192.168.1.252
+  mac: '78:0f:77:5a:d8:2a'
+  friendly_name: TV Control
+  type: rm_mini
+  switches:
+    tv:
+      friendly_name: "Panasonic Tv"
+      command_on: 'JgAyAXI5Dw4OKw8ODw4ODw4PDg4PDg4PDg8ODg8ODg8OKw4PDg8ODg8ODg8ODw4ODw4ODw4rDw4ODw4PDg4PDg4PDg8ODg8rDg4PKw4rDysOKw8ODg8QKQ8OECkRKRApECoQDRApEAAJkHQ4EA0QKQ8OEA0QDBEMEA0QDQ4OEA0QDRANEAwQKhAMEQwPDhANEA0ODg8ODg8QDRApEA0ODg8OEA0ODxAMEA0QDRApDw4QKg4rECkPKw8OEA0OKw4PDisPKw4rDysODg8rEAAJkHI6Dg4QKg8ODw4PDRANDw4PDRANEA0PDg8NEA0QKhAMEQwQDRANEAwRDBANEAwRDBEpEAwRDBEMEA0QDRAMEQwQDRApEQwQKREpECkRKRAMEQwRKRAMESkRKBEpESgRDBEpEAANBQAAAAAAAA=='
+      command_off: 'JgAyAXI5Dw4OKw8ODw4ODw4PDg4PDg4PDg8ODg8ODg8OKw4PDg8ODg8ODg8ODw4ODw4ODw4rDw4ODw4PDg4PDg4PDg8ODg8rDg4PKw4rDysOKw8ODg8QKQ8OECkRKRApECoQDRApEAAJkHQ4EA0QKQ8OEA0QDBEMEA0QDQ4OEA0QDRANEAwQKhAMEQwPDhANEA0ODg8ODg8QDRApEA0ODg8OEA0ODxAMEA0QDRApDw4QKg4rECkPKw8OEA0OKw4PDisPKw4rDysODg8rEAAJkHI6Dg4QKg8ODw4PDRANDw4PDRANEA0PDg8NEA0QKhAMEQwQDRANEAwRDBANEAwRDBEpEAwRDBEMEA0QDRAMEQwQDRApEQwQKREpECkRKRAMEQwRKRAMESkRKBEpESgRDBEpEAANBQAAAAAAAA=='
+    amp:
+      friendly_name: "Sony Sound Sytsem"
+      command_on: 'JgAQAU8UExQnFBQTKBQTFCcUKBMUFBMUFBQTFSgSKRIUFBQAArJRERYSKRIWEioRFRIpEioSFRIWERYSFRQoEikSFRIWAAKwTxQUEygUExQoExQUJxQnFBQUExQUExQUJxQnFBQUEwACtE8TFBQnFBQTKBQTFCcUKBMUFBQTFBQTFCgTKBQTFBQAArNPExQUJxQUFCcUFBMoEygUExQUExQUFBMoEygUExQUAAKzTxQTFCcUFBQnFBQTKBMoFBMUFBQTFBQTKBQnFBMUFAACs08UFBMoFBMUJxQUFSYVJhQUFRIUFBMUFCkTKBIVExMAArNSERUSKxAWEikSFhIqESoRFRIWEhUSFhIqESoRFhEWAA0FAAAAAAAAAAA='
+      command_off: 'JgCqAFESKRIWEicUFRIoExYSFBMUFBMUFBQTFCgTKBMUFBQAAsVPFCcUFBMoFBMUJxQUFBMUFBMUFBQTFBQnFCgTFBQTAALGTxQnFBQUJxQUEygTFBQUExQUExQUFBMUKBMoExQUFAACxk8UKBMUFCcUFBMoExQUFBMUFBQTFBQTFCgTKBMUFBQAAsZREikSFhIpEhYRKhEXERYRFxEWERcRFhEqESsQFxEWAA0FAAAAAAAAAAAAAAAAAAA='
+    sound:
+      friendly_name: "Mute TV"
+      command_on: 'JgDuAE8UFBMUFCcUFBMoFBMUFBQTFBQTFBQUEygTKBQTFBQAAtlPFBQUExQoExQUJxQUExQUExQUFBMUFBMoFCcUFBMUAALaTxQTFBQTKBQTFCgTFBQUExQUExQUFBMUJxQoExQUFAAC2k8UFBMUFCcUFBMoFBMUFBMUFBQTFBQUEygTKBQTFBQAAtpPFBQTFBQnFBQTKBQTFBQUExQUExQUFBMoFCcUExQUAALaTxQUExQUJxQUEygTFBQUExQUFBMUFBQTKBMoFBMUFAAC2k8UExQUEygUExQoExQUFBMUFBMUFBMUFCcUKBMUFBQADQUAAAAAAAAAAAAA'
+      command_off: 'JgDuAE8UFBMUFCcUFBMoFBMUFBQTFBQTFBQUEygTKBQTFBQAAtlPFBQUExQoExQUJxQUExQUExQUFBMUFBMoFCcUFBMUAALaTxQTFBQTKBQTFCgTFBQUExQUExQUFBMUJxQoExQUFAAC2k8UFBMUFCcUFBMoFBMUFBMUFBQTFBQUEygTKBQTFBQAAtpPFBQTFBQnFBQTKBQTFBQUExQUExQUFBMoFCcUExQUAALaTxQUExQUJxQUEygTFBQUExQUFBMUFBQTKBMoFBMUFAAC2k8UExQUEygUExQoExQUFBMUFBMUFBMUFCcUKBMUFBQADQUAAAAAAAAAAAAA'
+    volume:
+      friendly_name: "Volume"
+      command_on: 'JgB0A08UFBMoExUTFBMpEhUTFBMVExQTFRIVEygTKRIVExUAAthQEhUTKBMVExQTKBMVExQTFRIVExUSFRMoEygTFRMUAALZUBIVEygTFRIVEygTFRIVExUSFRMVEhUTJxQnFBQTFQAC2k8UExQoExQUExQoExQUExQUFBMUFBMUFCcUKBMUFBMAAttPExQUJxQUExQUJxQUExQUFBMUFBMUFBQnFCcUFBMUAALaTxQVEikSFRMVEikTFBMVEhUTFRIVExUSKRIpExQTFQAC2VASFhMnExUSFhIoExYRFhIWERYSFRIWEygSKBMWExQAAthQExYTJxMVEhYRKhIVEhYRFhMVERYSFRIpEikTFBMVAALZUBIVEygTFhEWEigTFRIWEhUSFRMVEhUTKBMoExUSFQAC2VATFhEpEhUTFRIpExQTFRIVExUSFhIVEikSKRMUExUAAtlQEhUTKBMVEhUTKBMVEhUTFRIVExUSFRMoEygTFRIVAALZUBMVEikSFRMVEikTFBMVEhUTFRIVExQTKRIoExUTFQAC2VASFRMoExUSFRMoExUSFRMVEhUTFRIVEygTKBMVEhUAAtlQExUSKRIVExUSKRIVExUSFRMVEhUTFBMpEikSFRMVAALZThQVEygTFRIVEygTFRIVExUSFRMUExUTJxQnFBUSFQAC2VATFBMpEhUTFBMpEhUTFRIVExQTFRMUEycUKBMVExQAAtlQExUTKBMUExUTKBMUExUTFBMVEhUTFRIoFCgTFBMVAALZUBMUEygTFRMUEycUFRMUExUSFRMVEhUTKBMoExUTFAAC2U8UFRIpExQTFRIoFBMUFRMUExQTFBQVEigTKBQTFBUAAtlPExQUJxQUExUTJxQUFBMUFRIUFBUSFRMnFCcUFBMUAALaTxQVEigTFRMVEigUFBMUExUTFBMUFBQTKBMoExQUFAAC2k8TFBQnFBQTFRMnFBQTFBQUExQUExQUFCcUJxQUExQAAtpPFBMUKBMUFBMUKBMUFBQTFBQTFBQUExQnFCgTFBQTAALaTxQUFCcUExQUFCcUFBMUFBMUFBQTFBQTKBQnFBMUFAAC2k8UExQnFBQUExQoExQUExQUFBMUFBMUFCcUJxQUFBMAAtpPFBUSKBQUExUTJxQUExUTFBMVEhUTFRIpEikTFBMVAA0FAAAAAA=='
+      command_off: 'JgBSA1ESKRIpEhQTFhIpEhUSFhMUEhYSFRIWEygSKRIWEhUAAsRREygSKRIVEhYSKRIVFBQSFRIWExQTFRIpEikSFRMUAALFURInFCgTFBQTFScVEhQUExQUExQUFBMVJhQpEhQVEwACxlESKRIpEhYSFBMpEhQVFBQUEhUSFhIVEikSKhEWEhUAAsVREykRKhEWEhUSKhMUEhUSFxEVEhYTFBIqESoRFhIWAALEUhArESoRFhEXESoRFhEXEhURFxEWERcQKxEqERYRFwACw1ESKhEqERcRFhEqERcRFhEXERYRFxEWESkSKhEWEhYAAsRSESoRKhEWExURKhEWExURFhEXERYRFxIpESoRFhEXAALDUhEqESsQFxEWESsQFxEWERcRFhEXERYRKhEqERcRFgACxFIRKhEqERcRFhIpERcRFhEXERYRFhEXESoRKhEXERYAAsRSESoRKhEWEhUTKREWEhUSFhEWEhYRFhIqESoRFhIVAALFURIpEikSFhIVEioRFhIVEhYRFhIWExQTKBIpEhYSFQACxVASKhEqExQSFRQoEhUSFRQUExQSFhIVEioSKRMUEhUAAsVREikSKRMTFBMUJxQUFBMUFBMUFBQTFBQnFSYUFBQTAALHTxMoEygUExQUFSYUExQUFBMUFBMUFBQTKBMoFBMUFAACxk8UJxQnFBQUExQnFBQVEhUTExQUFBUSFCcUJxQUFBMAAsdPEygTKBQTFBQVJhQTFBQTFBQUExQUExQoEygUExQUAALGTxUmFCcUFBMUFCcUFBMUFBQTFBQTFBQUJxQnFBQTFAACxk8UKBQnExQUFBMoExQUFBMUFBMUFBQTFCgTKBMUFBQAAsZPEygUJxQUExQUJxQUExQUExQUFBMUFBUmFCcUFBMUAALGTxUnFSYTFBUTEygUExQUExQUFBMUFBMUKBMoExQUFAACxk8UKBQnExQUFBMoExQUFBMUFBMUFBQTFCgUJxMUFRMAAsZPFCcUKBMUFBMUKBMUFRIUFBQTFBQUExQnFCgTFBQTAALHTxMoFCcUExQUFSYUExQUFBMUFBUSFBQTKBUmFBMUFAACxk8UJxQpEhQTFBQpEhUTFRIUExYSFRIWEikSKRMUEhYADQUAAAAAAAA='
+
+#- platform: broadlink
+#  host: 192.168.1.198
+#  mac: '78:0f:77:b9:41:ff'
+#  friendly_name: RM Pro
+#  type: rm2_pro_plus
+ 
+
+#--------------------------- Night Lights ---------------------------
+- platform: mqtt
+  name: "Master Bathroom Night Light Switch"
+  state_topic: "stat/nightlight1/POWER1"
+  command_topic: "cmnd/nightlight1/POWER1"
+  availability_topic: "tele/nightlight1/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Night Light 2 Switch"
+  state_topic: "stat/nightlight2/POWER1"
+  command_topic: "cmnd/nightlight2/POWER1"
+  availability_topic: "tele/nightlight2/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+#-------------------------------------------3d printer---------------------------------------
+- platform: mqtt
+  name: "3D Printer Light"
+  state_topic: "stat/3d_printer_light/POWER"
+  command_topic: "cmnd/3d_printer_light/POWER"
+  availability_topic: "tele/3d_printer_light/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false

@@ -1,0 +1,231 @@
+homeassistant:
+  packages: !include_dir_named packages
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 40.501027
+  longitude: -75.969206
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 374
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/New_York
+  # Customization file
+  customize: !include customize.yaml
+logger:
+recorder:
+# Enables the frontend
+frontend:
+  themes: !include_dir_merge_named themes
+
+system_health:
+
+#------------------------Enables configuration UI------------------------
+config:
+breaking_changes:
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  include_used_components: true
+hacs:
+  token: !secret my_github_access_token
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+#-----------------------------Track the sun-----------------------------------------------------
+sun:
+
+person:
+
+#--------------------------------------------------------mqtt broker setup------------------------------------------------
+mqtt:
+  broker: 192.168.1.11
+  port: 1883
+  username: !secret mqtt_user
+  password: !secret mqtt_password
+  discovery: true
+  discovery_prefix: homeassistant
+
+#---------------------------------------------------zwave module---------------------------------------------------------
+zwave:
+  usb_path: /dev/ttyACM0
+  network_key: "0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10"
+
+#---------------camera------------------
+ffmpeg:
+stream:
+camera: !include cameras.yaml
+
+#---------------heating-----------------
+ecobee:
+  api_key: !secret ecobee_ap_key
+
+#-----------------------------Enables a map showing the location of tracked devices-------------------
+map:
+
+#-----------------------------Tracking--------------------------------------------------------------
+life360:
+  accounts:
+    - username: !secret life360_user
+      password: !secret life360_password
+    
+twilio:
+  account_sid: !secret twilio_sid
+  auth_token: !secret twilio_auth_token
+
+notify:
+  - name: Bar 911
+    platform: twilio_sms
+    from_number: +14845754377
+
+ 
+#------------------media------------------
+alexa_media:
+  accounts:
+    - email: !secret amazon_user
+      password: !secret amazon_password
+      url: amazon.com
+
+#------------------Text to speech----------------
+tts:
+  - platform: google_translate
+    service_name: google_say
+
+# Cloud---------------------------------------------------------------------------------------------------------
+cloud:
+  
+  alexa:
+    filter:
+      include_entities:
+        - input_boolean.switch_tv_power
+        - sensor.upstairs_ktchen_temperature
+        - sensor.2fl_livingroom_temperature
+        - sensor.master_bedroom_temperature
+        - sensor.master_bathroom_temperature
+        - sensor.master_bathroom_temperature
+      include_domains:
+        - fan
+        - light
+        - lock
+        - switch
+        - input_boolean
+
+
+
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+switch: !include switches.yaml
+light: !include lights.yaml
+sensor: !include sensors.yaml
+fan: !include fans.yaml  
+zone: !include zones.yaml
+#-----------------------influxdb-------------------------------------------------
+influxdb:
+  host: 192.168.1.11
+  port: 8086
+  database: Homeassistant
+  username: homeassistant
+  password: !secret influxdb_password
+  max_retries: 3
+  default_measurement: state
+
+#-----------------------------------------------------------octoprint-------------------------------------
+octoprint:
+  host: 192.168.1.248
+  api_key: !secret octoprint_api_key
+  name: Ender_3_Pro
+  bed: true
+  number_of_tools: 1
+  sensors:
+      monitored_conditions:
+        - 'Current State'
+        - 'Job Percentage'
+        - 'Temperatures'
+        - 'Time Elapsed'
+        - 'Time Remaining'
+
+
+#input booleans----------------------------------------------------------------------------------------------------
+input_boolean:
+  fan:
+    name: Livingroom Fan Automations
+    initial: off
+  livingroom_automations:
+    name: Livingroom Automations
+  bedroom_automations:
+    name: Bedroom Automations
+  bedroom_fan_automations:
+    name: Bedroom Fan Automations
+  master_bathroom_automations:
+    name: Master Bathroom Automations
+  kitchen_automations:
+    name: Upstairs Kitchen Automations
+  ac_kitchen:
+    name: AC kitchen
+  ac_livingroom:
+    name: AC living room
+  switch_tv:
+    name: TV Status
+  switch_tv_power:
+    name: Livingroom TV  
+  switch_presence_sensors:
+    name: Presence Sensors
+  valentines:
+    name: Valentines Day
+  st_patrics:
+    name: St Patricks
+  easter:
+    name: Easter
+  memorial_day:
+    name: Memorial Day
+  july_4th:
+    name: July 4th
+  labor_day:
+    name: Labor Day
+  halloween:
+    name: Halloween
+  thanksgiving:
+    name: Thanksgiving
+  christmas:
+    name: Christmas
+  school_alarm:
+    name: School Alarms
+  printer_automations:
+    name: Printer Automations
+  lounge_lights:
+    name: Lounge Lights
+#____________________________________________________Holiday Lights__________________________________________________________
+input_number:
+  led_identification:
+    name: LED identification
+    initial: 0
+    min: 0
+    max: 700
+    step: 1
+  chase_speed:
+    name: chase speed
+    initial: 0
+    min: 0
+    max: 100
+    step: 1
+  refrigerator_set_temp:
+    name: refrigerator set temp
+    initial: 32
+    min: 30
+    max: 42
+    step: 1

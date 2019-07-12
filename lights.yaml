@@ -1,0 +1,278 @@
+#-------------------- upstairs livingroom sensor------------------------------
+- platform: mqtt  
+  schema: json
+  name: "2fl Livingroom LED"  
+  state_topic: "fl2/livingroom"  
+  command_topic: "fl2/livingroom/set"  
+  brightness: true  
+  flash_time_short: 2
+  rgb: true  
+  optimistic: false  
+  qos: 0  
+
+#-------------------- master bedroom sensor ----------------------------------
+
+#- platform: mqtt  
+#  schema: json  
+#  name: "Master Bedroom LED"  
+#  state_topic: "fl2/masterbedroom"  
+#  command_topic: "fl2/masterbedroom/set"  
+#  brightness: true  
+#  flash_time_short: 2  
+#  rgb: true  
+#  optimistic: false  
+#  qos: 0  
+
+#--------------------- upstairs kitchen sensor-------------------------------
+
+- platform: mqtt  
+  schema: json
+  name: "Upstairs Kitchen LED"  
+  state_topic: "tele/kitchen/sensor"  
+  command_topic: "cmnd/kitchen/light/set"  
+  brightness: true  
+  flash_time_short: 2
+  rgb: true  
+  optimistic: false  
+  qos: 0  
+
+#--------------------- downstairs kitchen sensor-------------------------------
+
+- platform: mqtt  
+  schema: json
+  name: "Downstairs Kitchen LED"  
+  state_topic: "tele/downstairskitchen/sensor"  
+  command_topic: "cmnd/downstairskitchen/light/set"  
+  brightness: true  
+  flash_time_short: 2
+  rgb: true  
+  optimistic: false  
+  qos: 0  
+
+#--------------------- master bathroom sensor-------------------------------
+
+- platform: mqtt  
+  schema: json
+  name: "Master Bathroom LED"  
+  state_topic: "tele/masterbathroom/sensor"  
+  command_topic: "cmnd/masterbathroom/light/set"  
+  brightness: true  
+  flash_time_short: 2
+  rgb: true  
+  optimistic: false  
+  qos: 0  
+#---------------------- bar sign --------------------------------------------
+
+- platform: mqtt
+  schema: json  
+  name: "Bar Sign"
+  state_topic: "bar/sign"
+  command_topic: "bar/sign/set"
+  effect: true
+  effect_list:
+    - bpm
+    - candy cane  
+    - confetti  
+    - cyclon rainbow  
+    - dots  
+    - fire  
+    - glitter  
+    - juggle  
+    - lightning
+    - noise  
+    - police all  
+    - police one  
+    - rainbow  
+    - rainbow with glitter  
+    - ripple  
+    - sinelon  
+    - solid  
+    - twinkle  
+  brightness: true
+  flash_time_short: 2
+  rgb: true
+  optimistic: false
+  qos: 0
+
+#------------------------------------- sexy bar sign --------------------------------
+
+- platform: mqtt
+  schema: json  
+  name: "Sexy Bar Sign"
+  state_topic: "bar/sexysign"
+  command_topic: "bar/sexysign/set"
+  effect: true
+  effect_list:
+    - bpm
+    - candy cane  
+    - confetti  
+    - cyclon rainbow  
+    - dots  
+    - fire  
+    - glitter  
+    - juggle  
+    - lightning
+    - noise  
+    - police all  
+    - police one  
+    - rainbow  
+    - rainbow with glitter  
+    - ripple  
+    - sinelon  
+    - solid  
+    - twinkle  
+  brightness: true
+  flash_time_short: 2
+  rgb: true
+  optimistic: false
+  qos: 0
+#____________________________________________TV Lights____________________________________________
+- platform: mqtt
+  schema: json  
+  name: "TV Lights"
+  state_topic: "house/tv"
+  command_topic: "house/tv/set"
+  effect: true
+  effect_list:
+    - bpm
+    - candy cane  
+    - confetti  
+    - cyclon rainbow  
+    - dots  
+    - fire  
+    - glitter  
+    - juggle  
+    - lightning
+    - noise  
+    - police all  
+    - police one  
+    - rainbow  
+    - rainbow with glitter  
+    - ripple  
+    - sinelon  
+    - solid  
+    - twinkle  
+  brightness: true
+  flash_time_short: 2
+  rgb: true
+  optimistic: false
+  qos: 0
+#____________________________________________________________Holiday Lights______________________________________________
+
+- platform: mqtt
+  schema: json  
+  name: "Holiday Lights"
+  state_topic: "holidayLights/state"
+  command_topic: "holidayLights/commands"
+  effect: true
+  brightness: true
+  effect_list:
+    - Color_Chase
+    #- Color_Glitter
+    #- Single_Race
+    - Double_Crash
+    #- Rainbow
+    - Blocked_Colors
+    - BPM
+    - Blue_Twinkle
+    - White_Twinkle
+    - Fire
+    - Spooky_Eyes
+    - Halloween
+    - Christmas_Chase
+    - Christmas_Blocks
+    - Christmas_Blue_Twinkle
+    - Christmas_White_Twinkle
+    - Solid
+    - Solid_Blocks
+    - Miami
+    - Steelers
+    - LED_Locator
+  qos: 1
+- platform: mqtt
+  schema: json  
+  name: "Color 1"
+  state_topic: "holidayLights/state1"
+  command_topic: "holidayLights/commands1"
+  rgb: true
+  qos: 1
+- platform: mqtt
+  schema: json  
+  name: "Color 2"
+  state_topic: "holidayLights/state2"
+  command_topic: "holidayLights/commands2" 
+  rgb: true
+  qos: 1
+- platform: mqtt
+  schema: json  
+  name: "Color 3"
+  state_topic: "holidayLights/state3"
+  command_topic: "holidayLights/commands3"  
+  rgb: true
+  qos: 1
+
+#----------------------------------------------------shower lights -----------------------------------------
+- platform: mqtt
+  name: "shower lights"
+  command_topic: "cmnd/shower/POWER"
+  state_topic: "stat/shower/RESULT"
+  state_value_template: "{{value_json.POWER}}"
+  availability_topic: "tele/shower/LWT"
+  brightness_command_topic: "cmnd/shower/Dimmer"
+  brightness_state_topic: "tele/shower/STATE"
+  brightness_scale: 100
+  on_command_type: "brightness"
+  brightness_value_template: "{{value_json.Dimmer}}"
+  color_temp_command_topic: "cmnd/shower/CT"
+  color_temp_state_topic: "tele/shower/STATE"
+  color_temp_value_template: "{{value_json.CT}}"
+  rgb_command_topic: "cmnd/shower/Color2"
+  rgb_state_topic: "tele/shower/STATE"
+  rgb_value_template: "{{value_json.Color.split(',')[0:3]|join(',')}}"
+  effect_command_topic: "cmnd/shower/Scheme"
+  effect_state_topic: "tele/shower/STATE"
+  effect_value_template: "{{value_json.Scheme}}"
+  effect_list:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  qos: 1
+  retain: false
+#--------------------------------------- Master Night Light -----------------------------------------
+- platform: mqtt
+  name: "Master Bathroom Night Light"
+  state_topic: "stat/nightlight1/POWER2"
+  command_topic: "cmnd/nightlight1/POWER2"
+  availability_topic: "tele/nightlight1/LWT"
+  brightness_state_topic: "stat/nightlight1/RESULT"
+  brightness_command_topic: "cmnd/nightlight1/Dimmer"
+  brightness_scale: 100
+  brightness_value_template: "{{ value_json.Dimmer }}"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Night Light 2"
+  state_topic: "stat/nightlight2/POWER2"
+  command_topic: "cmnd/nightlight2/POWER2"
+  availability_topic: "tele/nightlight2/LWT"
+  brightness_state_topic: "stat/nightlight2/RESULT"
+  brightness_command_topic: "cmnd/nightlight2/Dimmer"
+  brightness_scale: 100
+  brightness_value_template: "{{ value_json.Dimmer }}"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
